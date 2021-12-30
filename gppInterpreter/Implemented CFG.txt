@@ -1,0 +1,34 @@
+
+
+Implemented CFG rules in lisp interpreter:
+
+
+EXPI-> 	(+ EXPI EXPI) |
+           (- EXPI EXPI) |
+           (* EXPI EXPI) |
+           (/ EXPI EXPI) |
+           Id | IntegerValue
+
+EXPB-> 	(and EXPB EXPB) |
+           (or EXPB EXPB) |
+           (not EXPB) |
+           (equal EXPB EXPB) |
+           BinaryValue
+
+EXPLISTI-> (concat EXPLISTI EXPLISTI) |
+           (append EXPI EXPLISTI)  |
+           LISTVALUE 
+
+LISTVALUE-> '(VALUES) |
+            '() |
+            (list VALUES)
+
+EXPSET->   (set Id EXPI)
+
+EXPIF->    (if EXPB EXPLISTI EXPLISTI)
+
+VALUES->   VALUES IntegerValue |
+           IntegerValue
+
+START->  EXPI | EXPB | EXPLISTI | LISTVALUE | EXPSET | EXPIF
+ 
